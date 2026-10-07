@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play In Your Closet — personal styling &amp; closet consulting</title>
+<meta name="description" content="Closet sessions and thrift sourcing. We work with what you already own first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ---------------------------------------------------------------
+   TOKENS — change these six values and the whole site changes
+   --------------------------------------------------------------- */
+:root{
+  --pine:   #14342E;  /* page ground */
+  --pine-2: #0F2723;  /* deeper panels */
+  --ivory:  #F6F1E7;  /* type */
+  --brass:  #C9A227;  /* rails, hooks, links */
+  --blush:  #E4A08C;  /* secondary accent */
+  --sage:   #9FB29A;  /* quiet text */
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans:  "Karla", "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+}
+/* The palette is intentionally dark in both schemes — these keep a
+   viewer's light/dark setting from inverting it. */
+:root:not([data-theme="light"]){ color-scheme: dark; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --pine:#14342E; --ivory:#F6F1E7; }
+}
+:root[data-theme="dark"]{ --pine:#14342E; --ivory:#F6F1E7; }
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--pine);
+  color:var(--ivory);
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:clamp(1rem,0.95rem + 0.25vw,1.0625rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{ max-width:100%; height:auto; display:block; }
+
+a{ color:var(--brass); text-decoration-thickness:1px; text-underline-offset:0.25em; }
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--blush);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---------------------------------------------------------------
+   THE RAIL — every section hangs from a rod, like a closet
+   --------------------------------------------------------------- */
+section{ padding:clamp(3.5rem,8vw,6.5rem) var(--gutter); }
+.rail{ position:relative; }
+.rail::before{
+  content:"";
+  position:absolute;
+  left:var(--gutter); right:var(--gutter);
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,var(--brass),rgba(201,162,39,.25));
+}
+.hook{
+  display:block;
+  width:34px; height:28px;
+  margin:-13px 0 2.25rem;
+}
+.hook svg{ width:100%; height:100%; display:block; }
+.hook path{
+  fill:none;
+  stroke:var(--brass);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.wrap{ max-width:76rem; margin:0 auto; }
+
+/* ---------------------------------------------------------------
+   HERO
+   --------------------------------------------------------------- */
+.hero{
+  min-height:88svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:clamp(2.5rem,7vw,4rem);
+}
+.mark{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:1.05rem;
+  letter-spacing:0.01em;
+  color:var(--brass);
+  margin:0 0 auto;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-optical-sizing:auto;
+  font-weight:300;
+  font-size:clamp(2.6rem,7.5vw,5.6rem);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  margin:2.5rem 0 0;
+  max-width:16ch;
+  text-wrap:balance;
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:500;
+}
+.hero p{
+  max-width:46ch;
+  margin:1.75rem 0 0;
+  color:var(--sage);
+  font-size:clamp(1.05rem,1rem + 0.4vw,1.25rem);
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem 1.5rem;
+  align-items:center;
+  margin-top:2.75rem;
+}
+
+.btn{
+  display:inline-block;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1rem;
+  padding:0.9rem 1.6rem;
+  background:var(--brass);
+  color:var(--pine-2);
+  border:1.5px solid var(--brass);
+  border-radius:999px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .18s ease, color .18s ease;
+}
+.btn:hover{ background:transparent; color:var(--brass); }
+.btn-quiet{
+  background:transparent;
+  color:var(--ivory);
+  border-color:rgba(246,241,231,.35);
+}
+.btn-quiet:hover{ border-color:var(--ivory); background:transparent; color:var(--ivory); }
+
+/* ---------------------------------------------------------------
+   SHARED TYPE
+   --------------------------------------------------------------- */
+h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(1.9rem,1.4rem + 2.2vw,3.1rem);
+  line-height:1.1;
+  letter-spacing:-0.015em;
+  margin:0 0 1.25rem;
+  max-width:20ch;
+}
+h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:1.3rem;
+  line-height:1.25;
+  margin:0 0 .5rem;
+}
+p{ max-width:var(--measure); }
+.lede{ color:var(--sage); max-width:52ch; margin-top:0; }
+
+/* ---------------------------------------------------------------
+   HOW IT WORKS — a real sequence, so it gets numbers
+   --------------------------------------------------------------- */
+.steps{
+  list-style:none;
+  counter-reset:step;
+  padding:0;
+  margin:3rem 0 0;
+  display:grid;
+  gap:2.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+}
+.steps li{ counter-increment:step; }
+.steps li::before{
+  content:counter(step);
+  font-family:var(--serif);
+  font-size:.95rem;
+  color:var(--brass);
+  display:block;
+  padding-bottom:.75rem;
+  margin-bottom:1rem;
+  border-bottom:1px solid rgba(201,162,39,.3);
+}
+.steps p{ margin:0; color:var(--sage); }
+
+/* ---------------------------------------------------------------
+   SERVICES
+   --------------------------------------------------------------- */
+.services{ margin-top:3rem; display:grid; gap:0; }
+.service{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:.5rem 3rem;
+  padding:2rem 0;
+  border-top:1px solid rgba(246,241,231,.14);
+}
+.service:last-child{ border-bottom:1px solid rgba(246,241,231,.14); }
+.service p{ margin:0; color:var(--sage); }
+.price{
+  font-family:var(--serif);
+  font-size:1.15rem;
+  color:var(--blush);
+  white-space:nowrap;
+}
+@media (min-width:46rem){
+  .service{ grid-template-columns:14rem 1fr 8rem; align-items:start; }
+  .service h3{ margin:0; }
+  .price{ text-align:right; }
+}
+
+/* ---------------------------------------------------------------
+   BEFORE THE CALL
+   --------------------------------------------------------------- */
+.intake{ background:var(--pine-2); }
+.bring{
+  list-style:none;
+  padding:0;
+  margin:2.5rem 0 0;
+  display:grid;
+  gap:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+  max-width:64rem;
+}
+.bring li{
+  padding-left:1.6rem;
+  position:relative;
+  color:var(--sage);
+}
+.bring li::before{
+  content:"";
+  position:absolute;
+  left:0; top:.6em;
+  width:9px; height:9px;
+  border:1.5px solid var(--blush);
+  border-radius:50%;
+}
+.bring strong{ color:var(--ivory); font-weight:600; display:block; }
+
+/* ---------------------------------------------------------------
+   BOOKING SLOT
+   --------------------------------------------------------------- */
+#booking-slot{
+  margin-top:2.5rem;
+  min-height:520px;
+}
+
+/* ---------------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------------- */
+footer{
+  padding:3rem var(--gutter) 4rem;
+  border-top:1px solid rgba(246,241,231,.14);
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem 2rem;
+  justify-content:space-between;
+  align-items:baseline;
+  color:var(--sage);
+  font-size:.95rem;
+}
+footer .mark{ margin:0; }
+
+/* ---------------------------------------------------------------
+   ONE page-load moment, on the hero only
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion:no-preference){
+  .hero h1, .hero p, .hero-actions{
+    opacity:0;
+    transform:translateY(12px);
+    animation:settle .7s cubic-bezier(.22,.7,.3,1) forwards;
+  }
+  .hero p{ animation-delay:.12s; }
+  .hero-actions{ animation-delay:.24s; }
+}
+@keyframes settle{ to{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     EDIT: business name (3 places: <title>, .mark, footer)
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="mark">Play In Your Closet</p>
+
+    <h1>You own forty things you love and wear <em>six</em> of them.</h1>
+
+    <p>Personal styling and closet consulting in New York. We start with what's
+      already hanging there — the pieces you kept for a reason and have never
+      quite figured out.</p>
+
+    <div class="hero-actions">
+      <a class="btn" href="#book">Book a free intro call</a>
+      <a class="btn btn-quiet" href="#services">See what a session looks like</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="rail" id="how">
+  <div class="wrap">
+    <span class="hook" aria-hidden="true">
+      <svg viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 2.5c0-2 3-2 3 0 0 1.6-1.6 2-3 2.9L4 13.5c-2 1.3-2 4 0 5.2 3.5 2.1 8.2 3.3 13 3.3s9.5-1.2 13-3.3c2-1.2 2-3.9 0-5.2L17 5.4"/>
+        <path d="M3 19.5h28"/>
+      </svg>
+    </span>
+    <h2>How it works</h2>
+    <p class="lede">Three steps, and the first one is free.</p>
+
+    <ol class="steps">
+      <li>
+        <h3>Fifteen minutes on the phone</h3>
+        <p>You send a few photos ahead of time, we talk about what's frustrating
+          you, and you find out whether this is worth your money before you spend any.</p>
+      </li>
+      <li>
+        <h3>We get in the closet</h3>
+        <p>Two to three hours pulling everything out, trying things on, and building
+          outfits from what you own. You keep photos of every look we land on.</p>
+      </li>
+      <li>
+        <h3>We fill the actual gaps</h3>
+        <p>Once we know what's missing, I source it — mostly secondhand, always
+          within a budget you set first.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVICES
+     EDIT: your prices. Placeholders below.
+     ============================================================ -->
+<section class="rail" id="services">
+  <div class="wrap">
+    <span class="hook" aria-hidden="true">
+      <svg viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 2.5c0-2 3-2 3 0 0 1.6-1.6 2-3 2.9L4 13.5c-2 1.3-2 4 0 5.2 3.5 2.1 8.2 3.3 13 3.3s9.5-1.2 13-3.3c2-1.2 2-3.9 0-5.2L17 5.4"/>
+        <path d="M3 19.5h28"/>
+      </svg>
+    </span>
+    <h2>What you can book</h2>
+
+    <div class="services">
+      <div class="service">
+        <h3>Intro call</h3>
+        <p>Fifteen minutes. You tell me what isn't working, I tell you honestly
+          whether I can help and what it would cost.</p>
+        <span class="price">Free</span>
+      </div>
+
+      <div class="service">
+        <h3>Closet session</h3>
+        <p>Two to three hours in your closet. Nothing gets bought. We build
+          outfits out of what you already own and photograph the ones that work.</p>
+        <span class="price">$—</span>
+      </div>
+
+      <div class="service">
+        <h3>Thrift sourcing</h3>
+        <p>I shop the gaps we identified — secondhand first — and bring options
+          to you. Billed for the time, plus whatever you decide to keep.</p>
+        <span class="price">$—</span>
+      </div>
+
+      <div class="service">
+        <h3>Closet session + sourcing</h3>
+        <p>The full thing, booked together. Most people who start with one end up
+          wanting the other.</p>
+        <span class="price">$—</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INTAKE — the four things you ask for before the call
+     ============================================================ -->
+<section class="intake rail" id="before">
+  <div class="wrap">
+    <span class="hook" aria-hidden="true">
+      <svg viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 2.5c0-2 3-2 3 0 0 1.6-1.6 2-3 2.9L4 13.5c-2 1.3-2 4 0 5.2 3.5 2.1 8.2 3.3 13 3.3s9.5-1.2 13-3.3c2-1.2 2-3.9 0-5.2L17 5.4"/>
+        <path d="M3 19.5h28"/>
+      </svg>
+    </span>
+    <h2>Send these before we talk</h2>
+    <p class="lede">Four things, five minutes. They make the free call actually
+      useful instead of introductory.</p>
+
+    <ul class="bring">
+      <li><strong>Someone whose style you'd steal</strong>
+        A name or a screenshot. It doesn't have to be a celebrity.</li>
+      <li><strong>A photo of your uniform</strong>
+        Whatever you actually reach for on a normal Tuesday.</li>
+      <li><strong>The piece you've kept but never wear</strong>
+        The one you can't get rid of and can't figure out. Photo of it on the hanger is fine.</li>
+      <li><strong>What you want out of the time</strong>
+        A sentence. "Stop buying the same black pants" is a real answer.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     BOOKING
+     EDIT: delete the placeholder <p> inside #booking-slot and paste
+     your scheduler's embed code there. See the notes at the bottom
+     of this file for the exact snippet for each tool.
+     ============================================================ -->
+<section class="rail" id="book">
+  <div class="wrap">
+    <span class="hook" aria-hidden="true">
+      <svg viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 2.5c0-2 3-2 3 0 0 1.6-1.6 2-3 2.9L4 13.5c-2 1.3-2 4 0 5.2 3.5 2.1 8.2 3.3 13 3.3s9.5-1.2 13-3.3c2-1.2 2-3.9 0-5.2L17 5.4"/>
+        <path d="M3 19.5h28"/>
+      </svg>
+    </span>
+    <h2>Book the intro call</h2>
+    <p class="lede">Pick any open slot. You'll get a confirmation email with the
+      four things to send over.</p>
+
+    <div id="booking-slot">
+      <!-- Cal inline embed code begins -->
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-introcall"></div>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "introcall", {origin:"https://app.cal.com"});
+        Cal.config = Cal.config || {};
+        Cal.config.forwardQueryParams = true;
+
+        Cal.ns.introcall("inline", {
+          elementOrSelector:"#my-cal-inline-introcall",
+          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+          calLink: "closetstyle/introcall",
+        });
+
+        Cal.ns.introcall("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
+      <!-- Cal inline embed code ends -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     EDIT: email, Instagram handle
+     ============================================================ -->
+<footer>
+  <p class="mark">Play In Your Closet</p>
+  <p style="margin:0">
+    <a href="mailto:hello@example.com">hello@example.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://instagram.com/" rel="noopener">Instagram</a>
+  </p>
+  <p style="margin:0">New York, NY</p>
+</footer>
+
+
+<!-- ===============================================================
+     PASTE-IN SNIPPETS — pick one, drop it inside #booking-slot
+     (and delete the placeholder paragraph that's in there now).
+
+     CAL.COM (free, unlimited service types):
+       <iframe src="https://cal.com/YOUR-USERNAME/intro-call"
+               style="width:100%;height:100%;min-height:520px;border:0"
+               title="Booking calendar"></iframe>
+
+     SQUARE APPOINTMENTS (free, takes card payments):
+       Square gives you a hosted booking page. Easiest is to swap the
+       #booking-slot div for a button:
+       <a class="btn" href="https://square.site/book/YOUR-ID">Book a call</a>
+
+     CALENDLY (free, one event type only):
+       <div class="calendly-inline-widget"
+            data-url="https://calendly.com/YOUR-NAME/15min"
+            style="min-width:320px;height:520px"></div>
+       <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+     If you use an iframe, also delete the dashed border rule for
+     #booking-slot in the CSS above so it doesn't double up.
+     =============================================================== -->
+
+</body>
+</html>
